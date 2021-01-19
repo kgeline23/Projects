@@ -18,10 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StoreListAdapter extends ArrayAdapter {
-    private Context mContext;
-    private int mResourse;
     public List list = new ArrayList();
-    FirebaseDatabase firebaseDatabase;
 
     public StoreListAdapter(@NonNull Context context, int resource) {
         super(context, resource);

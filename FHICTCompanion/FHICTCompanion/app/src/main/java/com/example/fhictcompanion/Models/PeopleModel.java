@@ -1,4 +1,4 @@
-package com.example.fhictcompanion;
+package com.example.fhictcompanion.Models;
 
 import java.io.Serializable;
 

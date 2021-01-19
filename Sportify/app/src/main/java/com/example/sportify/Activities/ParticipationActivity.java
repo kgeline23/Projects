@@ -1,4 +1,4 @@
-package com.example.sportify;
+package com.example.sportify.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,7 +9,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,11 +17,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.sportify.Classes.Event;
+import com.example.sportify.Classes.Participation;
+import com.example.sportify.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -31,10 +31,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class ParticipationActivity extends AppCompatActivity {
 
@@ -63,13 +61,7 @@ public class ParticipationActivity extends AppCompatActivity {
         lvParticipations = (ListView) findViewById(R.id.lvParticipations);
         eventsAdaptor = new EventListAdapter(ParticipationActivity.this,R.layout.row_participation);
         lvParticipations.setAdapter(eventsAdaptor);
-        //mFirebaseAuth.getInstance().getCurrentUser().getEmail()
         String user = mFirebaseAuth.getInstance().getCurrentUser().getEmail();
-        //Toast.makeText(ParticipationActivity.this, user, Toast.LENGTH_LONG).show();
-
-
-        //        mDbRef.addValueEventListener(new ValueEventListener() {
-        //                        database.getReference("events").orderByChild("eventid").equalTo((part).addValueEventListener(new ValueEventListener() {
 
         database.getReference("participants").orderByChild("email").equalTo(user).addChildEventListener(new ChildEventListener() {
             @Override
@@ -87,8 +79,7 @@ public class ParticipationActivity extends AppCompatActivity {
                                 if(snapshot != null)
                                 {
                                     Event curevent = snapshot.getValue(Event.class);
-                                    //Toast.makeText(ParticipationActivity.this, curevent.id, Toast.LENGTH_SHORT).show();
-                                    if(curevent != null) { // will be null when there is a participation for an even that doesn't exist (anymore).
+                                    if(curevent != null) { // will be null when there is a participation for an event that doesn't exist (anymore).
                                         curevent.id = snapshot.getKey();
                                         eventsAdaptor.add(curevent);
                                     }
@@ -115,7 +106,6 @@ public class ParticipationActivity extends AppCompatActivity {
                 if(ds != null)
                 {
                     Participation curpart = ds.getValue(Participation.class);
-                    //Toast.makeText(ParticipationActivity.this, curpart.toString(), Toast.LENGTH_LONG).show();
                     curpart.id = ds.getKey();
                     for (Object e : eventsAdaptor.list) {
                         if(((Event)e).id.equals(curpart.eventid))
@@ -135,33 +125,9 @@ public class ParticipationActivity extends AppCompatActivity {
             }
         });
 
-/*
-        mDbRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds: snapshot.getChildren())
-                {
-                    if(ds != null)
-                    {
-                        Event curevent = ds.getValue(Event.class);
-                        Toast.makeText(ParticipationActivity.this, curevent.id, Toast.LENGTH_SHORT).show();
-                        curevent.id = ds.getKey();
-                        eventsAdaptor.add(curevent);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
- */
 
         lvParticipations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                //Toast.makeText(ParticipationActivity.this, t, Toast.LENGTH_LONG).show();
 
                 Intent i = new Intent(getApplicationContext(), SingleEventActivity.class);
                 // passing object of type Event
@@ -276,7 +242,7 @@ public class ParticipationActivity extends AppCompatActivity {
         switch (id) {
             case R.id.action_logout:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 return true;
             case R.id.action_profile:
                 startActivity(new Intent(this, ProfileActivity.class));

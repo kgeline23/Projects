@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
     <include
         layout="@layout/app_bar"
@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/fgTocken"
-        android:name="com.example.fhictcompanion.TokenFragment"
+        android:name="com.example.fhictcompanion.Fragments.TokenFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -1,4 +1,4 @@
-package com.example.fhictcompanion;
+package com.example.fhictcompanion.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,46 +10,31 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.Spinner;
 
-import java.util.ArrayList;
+import com.example.fhictcompanion.R;
 
-public class Person extends AppCompatActivity {
-    ListView lvStandart;
-    //ListView lvInfo;
-
-    String simpleList[] = {"Name: ","Email: ", "Office: ", "Number: ", "Department: "};
-
-    private String name;
-    private String  mail;
-    private String office;
-
+public class ScheduleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_person);
+        setContentView(R.layout.activity_schedule);
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
 
-        Intent i = getIntent();
-        int position = i.getExtras().getInt("id");
-        ImageAdapter imageAdapter = new ImageAdapter(this);
-        ImageView imageView = (ImageView) findViewById(R.id.full_image_view);
-        imageView.setImageResource(imageAdapter.images[position]);
+        Spinner spinnerC = (Spinner) findViewById(R.id.spinner_class);
+        Spinner spinnerW = (Spinner) findViewById(R.id.spinner_date);
 
-        lvStandart = (ListView)findViewById(R.id.listStaff);
+        // creation of dropdown for the spinners
+        ArrayAdapter<String> weekAdapter = new ArrayAdapter<String>(ScheduleActivity.this,android.R.layout.simple_expandable_list_item_1, getResources().getStringArray(R.array.Week));
+        weekAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerW.setAdapter(weekAdapter);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_listview, R.id.textView, simpleList);
-        //ArrayAdapter<String> arrayAdapterInfo = new ArrayAdapter<String>(this, R.layout.activity_listview, R.id.tvInfo, simpleList);
-        lvStandart.setAdapter(arrayAdapter);
+        ArrayAdapter<String> classAdapter = new ArrayAdapter<String>(ScheduleActivity.this,android.R.layout.simple_expandable_list_item_1, getResources().getStringArray(R.array.Classes));
+        classAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerC.setAdapter(classAdapter);
     }
-
-
-
-
     //for toolbar...creates the does on toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -66,11 +51,11 @@ public class Person extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.action_people:
-                Intent people = new Intent(this, People.class);
+                Intent people = new Intent(this, PeopleActivity.class);
                 startActivity(people);
                 break;
             case R.id.action_profile:
-                Intent profile = new Intent(this, Personal.class);
+                Intent profile = new Intent(this, PersonalActivity.class);
                 startActivity(profile);
                 break;
             case R.id.action_schedule:
@@ -86,6 +71,5 @@ public class Person extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }

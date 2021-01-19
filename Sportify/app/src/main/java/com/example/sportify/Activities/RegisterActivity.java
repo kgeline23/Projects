@@ -1,4 +1,4 @@
-package com.example.sportify;
+package com.example.sportify.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sportify.Classes.Member;
+import com.example.sportify.Classes.Preference;
+import com.example.sportify.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -26,8 +29,6 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView tvSignup;
     private FirebaseAuth mFirebaseAuth;
     DatabaseReference databaseReference;
-    FirebaseDatabase firebaseDatabase;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             public void onComplete(@NonNull Task<Void> task) {
 
                                                 Toast.makeText(RegisterActivity.this, "Registration Complete", Toast.LENGTH_LONG).show();
-                                                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                             }
                                         });
                             }
@@ -128,7 +129,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
             }
         });
     }

@@ -1,4 +1,4 @@
-package com.example.sportify;
+package com.example.sportify.Classes;
 
 import android.os.Parcel;
 import android.os.Parcelable;

@@ -1,4 +1,4 @@
-package com.example.sportify;
+package com.example.sportify.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sportify.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -49,14 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     currentUserId = firebaseUser.getUid().toString();
                     Toast.makeText(LoginActivity.this,"You are logged in", Toast.LENGTH_SHORT).show();
-
-                    /*
-                    database = FirebaseDatabase.getInstance();
-                    Categories c = new Categories("Basketball");
-                    mDbRef = database.getReference("categories").push();
-                    mDbRef.setValue(c);*/
-
-                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 }
                 else
                 {
@@ -113,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
         tvSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),RegisterActivity.class));
+                startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
             }
         });
 

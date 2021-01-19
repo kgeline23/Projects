@@ -15,8 +15,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Sportify">
-        <activity android:name=".CommentsActivity"></activity>
+        android:theme="@style/Theme.Sportify"
+        android:requestLegacyExternalStorage="true">
+        <activity android:name=".Activities.CommentsActivity"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -30,21 +31,21 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapActivity"
+            android:name=".Activities.MapActivity"
             android:label="@string/title_activity_map" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Activities.RegisterActivity" />
+        <activity android:name=".Activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".CreateEventActivity" />
-        <activity android:name=".ParticipationActivity" />
-        <activity android:name=".SingleEventActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Activities.ProfileActivity" />
+        <activity android:name=".Activities.CreateEventActivity" />
+        <activity android:name=".Activities.ParticipationActivity" />
+        <activity android:name=".Activities.SingleEventActivity" />
+        <activity android:name=".Activities.MainActivity" />
     </application>
 
 </manifest>

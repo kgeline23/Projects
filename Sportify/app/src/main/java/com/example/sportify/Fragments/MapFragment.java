@@ -1,4 +1,4 @@
-package com.example.sportify;
+package com.example.sportify.Fragments;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -8,7 +8,6 @@ import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,18 +27,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
+import com.example.sportify.Classes.Category;
+import com.example.sportify.Classes.Event;
+import com.example.sportify.R;
+import com.example.sportify.Activities.SingleEventActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -54,23 +53,15 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MapFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class MapFragment extends Fragment implements OnMapReadyCallback {
     FusedLocationProviderClient fusedLocationProviderClient;
     SupportMapFragment mapFragment;
     private GoogleMap mMap;
 
     FirebaseDatabase database;
-    DatabaseReference mDbRef;
-    List<Event> sportLocations;
     int LOCATION_REQUEST_CODE = 10001;
     Hashtable<String, Marker> markers = new Hashtable<String, Marker>(); // <EventId, Marker>
     Spinner filter;
@@ -96,46 +87,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         database = FirebaseDatabase.getInstance();
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
-        /*
-
-//        MainActivity.sportLocations = new ArrayList<Event>();
-
-        //@Abraham, below you can find the lat long list that you'll have to change
-        //
-        sportLocations = new ArrayList<Event>();
-
-        sportLocations.add(new Event(51.443365, 5.478255, "Location 1", "Basketball","Batman"));
-        sportLocations.add(new Event(51.443258, 5.480636, "Location 2", "Soccer","Batman"));
-        sportLocations.add(new Event(51.442214, 5.479649, "Location 3", "Basketball","Batman"));
-
-        //---------------
-
-
-        mDbRef.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds: snapshot.getChildren())
-                {
-                    if(ds != null)
-                    {
-                        Event curevent = ds.getValue(Event.class);
-                        curevent.id = ds.getKey();
-                        sportLocations.add(curevent);
-                        //Toast.makeText(getContext(),Double.toString(curevent.getLat()),Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-         */
-
-        //--------------
 
         mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
 
@@ -187,18 +138,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             public void onNothingSelected(AdapterView<?> adapterView) { }
         });
 
-/*
-        ((MainActivity)getActivity()).setFragmentRefreshListener(new MainActivity.FragmentRefreshListener() {
-            @Override
-            public void onRefresh() {
-                // Refresh Your Fragment
-                loadMarkers(MainActivity.filterId);
-                Toast.makeText(getContext(), "Refreshed", Toast.LENGTH_SHORT).show();
-            }
-        });
-
- */
-
         return v;
     }
 
@@ -207,35 +146,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        /*LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 17));*/
-/*
-        for (int i = 0; i < sportLocations.size(); i++) {
-
-            LatLng location = new LatLng(sportLocations.get(i).getLat(), sportLocations.get(i).getLon());
-            BitmapDescriptor d = null;
-
-            if (sportLocations.get(i).getEventCategory() == "Basketball") {
-                d = BitmapDescriptorFactory.fromResource(R.drawable.basketball);
-            } else if (sportLocations.get(i).getEventCategory() == "Soccer") {
-                d = BitmapDescriptorFactory.fromResource(R.drawable.soccer);
-            }
-
-            MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(location);
-            markerOptions.anchor((float) 0.5, (float) 0.5);
-            markerOptions.title(sportLocations.get(i).getEventName());
-
-            if (d != null) {
-                markerOptions.icon(d);
-            }
-
-            mMap.addMarker(markerOptions);
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 17));
-        }*/
-
+        //permission for location
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             getUserLocation();
             zoomToUserLocation();
@@ -279,11 +190,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 if(snapshot != null)
                 {
-                    //Toast.makeText(getContext(), "over here", Toast.LENGTH_SHORT).show();
                     Event curevent = snapshot.getValue(Event.class);
                     curevent.id = snapshot.getKey();
-                    /*if(distance(new LatLng(curevent.getLat(), curevent.getLon()), ) < 40000)*/
-                        notification(curevent);
+                    notification(curevent);
                     LatLng location = new LatLng(curevent.getLat(), curevent.getLon());
                     MarkerOptions markerOptions = new MarkerOptions();
                     markerOptions.position(location);

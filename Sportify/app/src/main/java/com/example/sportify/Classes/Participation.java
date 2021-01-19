@@ -1,10 +1,10 @@
-package com.example.sportify;
+package com.example.sportify.Classes;
 
 import java.sql.Time;
 import java.util.Date;
 
-class Participation {
-    String email, eventid, id;
+public class Participation {
+    public String email, eventid, id;
 
     public Participation() {
     }

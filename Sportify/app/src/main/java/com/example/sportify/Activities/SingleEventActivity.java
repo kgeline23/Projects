@@ -1,4 +1,4 @@
-package com.example.sportify;
+package com.example.sportify.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +27,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.sportify.Classes.Category;
+import com.example.sportify.Classes.Event;
+import com.example.sportify.Classes.Participant;
+import com.example.sportify.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
@@ -50,7 +54,6 @@ public class SingleEventActivity extends AppCompatActivity {
 
     FirebaseDatabase firebaseDatabase;
 
-    ArrayList<Participant> participants;
     ListView lvParticipants;
     TextView tvName, tvLocation, tvDate, tvTime, tvCategory, tvProficiency;
     Boolean curUserJoined = false;
@@ -146,7 +149,7 @@ public class SingleEventActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(SingleEventActivity.this, "Event removed successfully", Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     }
                 });
             }
@@ -235,8 +238,6 @@ public class SingleEventActivity extends AppCompatActivity {
             }
         });
 
-
-
         firebaseDatabase.getReference("categories/"+curEvent.getEventCategory()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -258,8 +259,6 @@ public class SingleEventActivity extends AppCompatActivity {
 
     void addParticipantsList()
     {
-        //Toast.makeText(SingleEventActivity.this, curEvent.id, Toast.LENGTH_SHORT).show();
-
         Query q = firebaseDatabase.getReference("participants").orderByChild("eventid").equalTo(curEvent.id);
         q.addValueEventListener(new ValueEventListener() {
             @Override
@@ -319,7 +318,6 @@ public class SingleEventActivity extends AppCompatActivity {
 
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -337,7 +335,7 @@ public class SingleEventActivity extends AppCompatActivity {
         switch (id) {
             case R.id.action_logout:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 return true;
             case R.id.action_profile:
                 startActivity(new Intent(this, ProfileActivity.class));

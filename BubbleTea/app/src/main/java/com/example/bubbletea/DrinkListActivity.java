@@ -38,8 +38,7 @@ public class DrinkListActivity extends AppCompatActivity {
     ListView lvDrinks;
     FirebaseDatabase database;
     Spinner sType, sCategory;
-    String catId, typeId, storeId;
-    //String filterCat = "categories" , filterType = "type";
+    String storeId;
     String filterCat , filterType;
     ArrayList<Drink> listDrinks;
     private static Query queryMarker;
@@ -68,7 +67,6 @@ public class DrinkListActivity extends AppCompatActivity {
                 DataSnapshot ds = snapshot;
                 if (ds != null) {
                     Drink curdrink = ds.getValue(Drink.class);
-                    //Toast.makeText(ParticipationActivity.this, curpart.toString(), Toast.LENGTH_LONG).show();
                     curdrink.id = ds.getKey();
                     drinkAdapter.add(curdrink);
                     listDrinks.add(curdrink);
@@ -155,10 +153,6 @@ public class DrinkListActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                /*
-                typeId = ((Type)sType.getSelectedItem()).id;
-                loadList(filterType, typeId);
-                 */
                 filterType =((Type)sType.getSelectedItem()).id;
                 loadList();
             }
@@ -171,10 +165,6 @@ public class DrinkListActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                /*
-                catId = ((Category)sCategory.getSelectedItem()).id;
-                loadList(filterCat, catId);
-                 */
                 filterCat = ((Category)sCategory.getSelectedItem()).id;
                 loadList();
             }

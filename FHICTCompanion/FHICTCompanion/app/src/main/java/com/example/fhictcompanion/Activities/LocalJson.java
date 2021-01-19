@@ -1,8 +1,10 @@
-package com.example.fhictcompanion;
+package com.example.fhictcompanion.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.fhictcompanion.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,9 +16,6 @@ import java.util.Scanner;
 public class LocalJson extends AppCompatActivity {
 
     String json_string;
-    JSONObject jsonObject;
-    JSONArray jsonArray;
-    String json_file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,10 +1,9 @@
-package com.example.fhictcompanion;
+package com.example.fhictcompanion.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -21,7 +20,8 @@ import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.fhictcompanion.TokenFragment.OnFragmentInteractionListener;
+import com.example.fhictcompanion.Fragments.TokenFragment;
+import com.example.fhictcompanion.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -38,8 +38,6 @@ public class MainActivity extends AppCompatActivity implements TokenFragment.OnF
     ListView simpleList;
     String[] newsList = {"News 1", "News 2", "News 3", "News 4", "News 5", "News 6"};
     TextView tv;
-    TextView tokenTest;
-    Button linkButton;
     public  static TextView data;
     public static String currrentUserToken;
     public static String scheduleJsonstring;
@@ -59,14 +57,7 @@ public class MainActivity extends AppCompatActivity implements TokenFragment.OnF
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.activity_listview, R.id.textView, newsList);
         simpleList.setAdapter(arrayAdapter);
         tv = findViewById(R.id.tvWelcome);
-
         data = findViewById(R.id.twNews);
-
-                //execute backgroundTask
-
-
-
-
     }
 
 
@@ -86,11 +77,11 @@ public class MainActivity extends AppCompatActivity implements TokenFragment.OnF
         switch (item.getItemId())
         {
             case R.id.action_people:
-                Intent people = new Intent(this, People.class);
+                Intent people = new Intent(this, PeopleActivity.class);
                 startActivity(people);
                 break;
             case R.id.action_profile:
-                Intent profile = new Intent(this, Personal.class);
+                Intent profile = new Intent(this, PersonalActivity.class);
                 startActivity(profile);
                 break;
             case R.id.action_schedule:
@@ -110,12 +101,8 @@ public class MainActivity extends AppCompatActivity implements TokenFragment.OnF
 
     @Override
     public void onFragmentInteraction(String token) {
-        //TokenFragment tokenFragment = (TokenFragment) getSupportFragmentManager().findFragmentById(R.id.fgTocken);
-        //tv.setText(token);
 
         currrentUserToken = token;
-        //tokenTest = findViewById(R.id.tokenTest);
-        //tokenTest.setText(token);
         FrameLayout fm = (FrameLayout) findViewById(R.id.news);
         fm.setVisibility(View.VISIBLE);
 
@@ -205,16 +192,6 @@ public class MainActivity extends AppCompatActivity implements TokenFragment.OnF
                 connection.setRequestProperty("Authorization","Bearer " + MainActivity.currrentUserToken);
 
                 InputStream is = connection.getInputStream();
-//                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
-//                StringBuilder stringBuilder= new StringBuilder();
-//                while ((JSON_STRING = bufferedReader.readLine()) != null)
-//                {
-//                    stringBuilder.append(JSON_STRING);
-//                }
-//
-//                bufferedReader.close();
-                Scanner scn = new Scanner(is);
-
                 String s = (new Scanner(is)).useDelimiter("\\z").next();
                 is.close();
                 connection.disconnect();
@@ -253,7 +230,6 @@ public class MainActivity extends AppCompatActivity implements TokenFragment.OnF
     public void getJsonCanvas()
     {
         new BackgroundTaskCanvas().execute();
-
     }
 
 
@@ -265,7 +241,6 @@ public class MainActivity extends AppCompatActivity implements TokenFragment.OnF
         @Override
         protected void onPreExecute() {
             json_url = "https://api.fhict.nl/people";
-
         }
 
         @Override
@@ -317,6 +292,5 @@ public class MainActivity extends AppCompatActivity implements TokenFragment.OnF
     public void getJsonPeople()
     {
         new BackgroundTaskPeople().execute();
-
     }
 }

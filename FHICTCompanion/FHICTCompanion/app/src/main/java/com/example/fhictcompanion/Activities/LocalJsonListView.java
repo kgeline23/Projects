@@ -1,4 +1,4 @@
-package com.example.fhictcompanion;
+package com.example.fhictcompanion.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,12 +10,12 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
+
+import com.example.fhictcompanion.Adapters.JsonAdaptor;
+import com.example.fhictcompanion.Models.Json;
+import com.example.fhictcompanion.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,13 +31,9 @@ public class LocalJsonListView extends AppCompatActivity {
     String json_string;
     JSONObject jsonObject;
     JSONArray jsonArray;
-    String json_file;
     JsonAdaptor localJsonAdapter;
     ListView localJsonListView;
-    ListView localClassList;
-    ArrayList<String> classes;
     LinearLayout root;
-    LayoutInflater layoutInflater;
 
 
     @Override
@@ -51,7 +47,6 @@ public class LocalJsonListView extends AppCompatActivity {
         localJsonListView = (ListView) findViewById(R.id.localjsonListView);
         localJsonListView.setAdapter(localJsonAdapter);
         root = (LinearLayout) findViewById(R.id.llclasses);
-        //layoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
         getJson();
         try {
@@ -124,11 +119,11 @@ public class LocalJsonListView extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.action_people:
-                Intent people = new Intent(this, People.class);
+                Intent people = new Intent(this, PeopleActivity.class);
                 startActivity(people);
                 break;
             case R.id.action_profile:
-                Intent profile = new Intent(this, Personal.class);
+                Intent profile = new Intent(this, PersonalActivity.class);
                 startActivity(profile);
                 break;
             case R.id.action_schedule:

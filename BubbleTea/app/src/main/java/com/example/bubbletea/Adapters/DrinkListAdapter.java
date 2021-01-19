@@ -99,23 +99,15 @@ public class DrinkListAdapter extends ArrayAdapter {
                     }
                 }
             }
-
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError error) {            }
         });
 
-
         tvName.setText(currentTea.name);
-        //tvType.setText(currentTea.type_id);
-        //tvCategory.setText(currentTea.category_id);
         if (had)
             tvHad.setText("yes");
         else
             tvHad.setText("no");
-
-        //Toast.makeText(DrinksActivity.this,"drink:  " + currentTea.getName(), Toast.LENGTH_SHORT).show();
 
         return convertView;
     }

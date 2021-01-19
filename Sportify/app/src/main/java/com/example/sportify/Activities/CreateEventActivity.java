@@ -1,15 +1,10 @@
-package com.example.sportify;
+package com.example.sportify.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
@@ -27,9 +22,11 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.sportify.Classes.Category;
+import com.example.sportify.Classes.Event;
+import com.example.sportify.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -169,7 +166,7 @@ public class CreateEventActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Toast.makeText(CreateEventActivity.this, "event creation Complete", Toast.LENGTH_LONG).show();
-                                    startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                 }
                             });
                 }
@@ -252,7 +249,7 @@ public class CreateEventActivity extends AppCompatActivity {
         switch (id) {
             case R.id.action_logout:
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                 return true;
             case R.id.action_profile:
                 startActivity(new Intent(this, ProfileActivity.class));

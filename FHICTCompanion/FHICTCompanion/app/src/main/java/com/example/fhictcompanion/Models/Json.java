@@ -1,6 +1,4 @@
-package com.example.fhictcompanion;
-
-import java.util.ArrayList;
+package com.example.fhictcompanion.Models;
 
 public class Json {
 

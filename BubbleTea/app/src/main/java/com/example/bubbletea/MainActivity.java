@@ -19,18 +19,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ImageButton bt_bubble = findViewById(R.id.ibBubble);
-        ImageButton bt_comm = findViewById(R.id.ibComments);
-
         bt_bubble.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, StoreListActivity.class));
             }
         });
-
-
-
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

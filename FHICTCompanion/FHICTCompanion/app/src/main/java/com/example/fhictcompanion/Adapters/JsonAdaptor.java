@@ -1,17 +1,17 @@
-package com.example.fhictcompanion;
+package com.example.fhictcompanion.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.example.fhictcompanion.Models.Json;
+import com.example.fhictcompanion.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,6 @@ public class JsonAdaptor extends ArrayAdapter {
     public JsonAdaptor(@NonNull Context context, int resource) {
         super(context, resource);
     }
-
 
     public void add( Json object) {
         super.add(object);
@@ -46,14 +45,11 @@ public class JsonAdaptor extends ArrayAdapter {
 
         View row;
         row = convertView;
-        //View layout;
-        //layout = convertView;
         JsonHolder jsonHolder;
         if(row == null)
         {
             LayoutInflater layoutInflater = (LayoutInflater) this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             row = layoutInflater.inflate(R.layout.localjsonrowlayout,parent,false);
-            //layout = layoutInflater.inflate(R.layout.localjsonrowlayout,parent,false);
             jsonHolder = new JsonHolder();
             jsonHolder.tx_room = (TextView) row.findViewById(R.id.tvRoomNum);
             jsonHolder.tx_description = (TextView) row.findViewById(R.id.tvDescription);

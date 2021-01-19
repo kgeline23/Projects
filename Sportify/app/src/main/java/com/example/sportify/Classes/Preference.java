@@ -1,4 +1,4 @@
-package com.example.sportify;
+package com.example.sportify.Classes;
 
 public class Preference {
     String category;

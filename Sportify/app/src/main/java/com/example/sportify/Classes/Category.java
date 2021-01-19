@@ -1,6 +1,6 @@
-package com.example.sportify;
+package com.example.sportify.Classes;
 
-class Category {
+public class Category {
 
     private String id;
     public String name;

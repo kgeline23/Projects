@@ -1,8 +1,12 @@
-package com.example.fhictcompanion;
+package com.example.fhictcompanion.Adapters;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+
+import com.example.fhictcompanion.Fragments.CanvasFragment;
+import com.example.fhictcompanion.Fragments.ScheduleFragment;
+import com.example.fhictcompanion.Fragments.SharepointFragment;
 
 public class PersonalPageAdapter extends FragmentPagerAdapter {
 

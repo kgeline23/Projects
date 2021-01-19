@@ -58,7 +58,6 @@ public class DrinkSingleActivity extends AppCompatActivity {
     Boolean extra = false;
     EditText etExtra;
     PopupWindow popup;
-    RelativeLayout rlPop;
     ConstraintLayout clDrink;
     ListView lvComments;
     CommentListAdapter cAdapter;

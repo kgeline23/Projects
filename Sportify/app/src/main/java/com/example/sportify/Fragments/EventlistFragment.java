@@ -1,4 +1,4 @@
-package com.example.sportify;
+package com.example.sportify.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +14,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.example.sportify.Adapters.EventsAdaptor;
+import com.example.sportify.Classes.Category;
+import com.example.sportify.Classes.Event;
+import com.example.sportify.R;
+import com.example.sportify.Activities.SingleEventActivity;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,20 +29,13 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EventlistFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class EventlistFragment extends Fragment {
 
     FirebaseDatabase database;
     DatabaseReference mDbRef;
     ListView eventsList;
-    List<Event> listofEvents;
     EventsAdaptor eventsAdaptor;
     Spinner filter;
     static String filterId;
@@ -70,40 +64,7 @@ public class EventlistFragment extends Fragment {
         eventsList = (ListView) view.findViewById(R.id.EventsListView);
         eventsAdaptor = new EventsAdaptor(getActivity(),R.layout.events);
         eventsList.setAdapter(eventsAdaptor);
-/*
-        mDbRef.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot ds: snapshot.getChildren())
-                {
-                    if(ds != null)
-                    {
-                        Event curevent = ds.getValue(Event.class);
-                        curevent.id = ds.getKey();
-                        eventsAdaptor.add(curevent);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
- */
-
         loadList();
-/*
-        ((MainActivity)getActivity()).setFragmentRefreshListener(new MainActivity.FragmentRefreshListener() {
-            @Override
-            public void onRefresh() {
-                // Refresh Your Fragment
-                loadList(MainActivity.filterId);
-            }
-        });
- */
 
         //Getting vales for filter
         filter = view.findViewById(R.id.spinnerFilter);
@@ -186,43 +147,26 @@ public class EventlistFragment extends Fragment {
                         Event curevent = snapshot.getValue(Event.class);
                         curevent.id = snapshot.getKey();
                         eventsAdaptor.add(curevent);
-
                 }
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-               /*
-                DataSnapshot ds = snapshot;
-                if(ds != null)
-                {
-                    Event curevent = ds.getValue(Event.class);
-                    curevent.id = ds.getKey();
-                    markers.get(curevent.id).remove();
-                }
-                */
-
             }
 
             @Override
             public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         };
         queryMarker.addChildEventListener(cel);
 
     }
-
-
-
 }

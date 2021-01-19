@@ -1,4 +1,4 @@
-package com.example.sportify;
+package com.example.sportify.Classes;
 
 public class Member {
     public String fName, lName, email, password,number, id, profilepic;

@@ -1,4 +1,4 @@
-package com.example.fhictcompanion;
+package com.example.fhictcompanion.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +11,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
-public class Profile extends AppCompatActivity {
+import com.example.fhictcompanion.Activities.LocalJsonListView;
+import com.example.fhictcompanion.Activities.MainActivity;
+import com.example.fhictcompanion.Activities.PeopleActivity;
+import com.example.fhictcompanion.Activities.PersonalActivity;
+import com.example.fhictcompanion.R;
+
+public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +26,6 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         Toolbar toolbar = findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
-
-
     }
 
     public void toCanvas(View view){
@@ -51,11 +54,11 @@ public class Profile extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.action_people:
-                Intent people = new Intent(this, People.class);
+                Intent people = new Intent(this, PeopleActivity.class);
                 startActivity(people);
                 break;
             case R.id.action_profile:
-                Intent profile = new Intent(this, Personal.class);
+                Intent profile = new Intent(this, PersonalActivity.class);
                 startActivity(profile);
                 break;
             case R.id.action_schedule:

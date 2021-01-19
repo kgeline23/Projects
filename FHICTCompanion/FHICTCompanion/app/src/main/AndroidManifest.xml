@@ -11,16 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".LocalJsonListView"></activity>
-        <activity android:name=".LocalJson" />
-        <activity android:name=".Personal" />
-        <activity android:name=".Person" />
-        <activity android:name=".Profile" />
+        <activity android:name=".Activities.LocalJsonListView"></activity>
+        <activity android:name=".Activities.LocalJson" />
+        <activity android:name=".Activities.PersonalActivity" />
+        <activity android:name=".Activities.PersonActivity" />
+        <activity android:name=".Activities.ProfileActivity" />
         <activity
-            android:name=".People"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".Schedule" />
-        <activity android:name=".MainActivity">
+            android:name=".Activities.PeopleActivity"
+            android:parentActivityName=".Activities.MainActivity" />
+        <activity android:name=".Activities.ScheduleActivity" />
+        <activity android:name=".Activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

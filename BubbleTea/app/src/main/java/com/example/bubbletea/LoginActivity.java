@@ -30,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvSignup;
     static String currentUserId = null;
     FirebaseDatabase database;
-    DatabaseReference mDbRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

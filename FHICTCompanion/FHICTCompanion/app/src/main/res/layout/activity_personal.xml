@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:visibility="visible"
-    tools:context=".Personal">
+    tools:context=".Activities.PersonalActivity">
 
     <include
         layout="@layout/app_bar"

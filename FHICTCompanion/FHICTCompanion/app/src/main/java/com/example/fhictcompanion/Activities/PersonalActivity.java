@@ -1,4 +1,4 @@
-package com.example.fhictcompanion;
+package com.example.fhictcompanion.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,10 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.fhictcompanion.Adapters.PersonalPageAdapter;
+import com.example.fhictcompanion.R;
 import com.google.android.material.tabs.TabItem;
 import com.google.android.material.tabs.TabLayout;
 
-public class Personal extends AppCompatActivity {
+public class PersonalActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +23,6 @@ public class Personal extends AppCompatActivity {
         setContentView(R.layout.activity_personal);
 
         final TabLayout personaltablayout = findViewById(R.id.personalTabLayout);
-        TabItem canvasTab = findViewById(R.id.tabCanvas);
-        TabItem scheduleTab = findViewById(R.id.tabSchedule);
-        TabItem sharepointTab = findViewById(R.id.tabSharepoint);
         final ViewPager personalVp = findViewById(R.id.personalViewPager);
 
         final PersonalPageAdapter personalPageAdapter = new
@@ -51,7 +50,6 @@ public class Personal extends AppCompatActivity {
 
     }
 
-
     //for toolbar...creates the does on toolbar
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -68,11 +66,11 @@ public class Personal extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.action_people:
-                Intent people = new Intent(this, People.class);
+                Intent people = new Intent(this, PeopleActivity.class);
                 startActivity(people);
                 break;
             case R.id.action_profile:
-                Intent profile = new Intent(this, Personal.class);
+                Intent profile = new Intent(this, PersonalActivity.class);
                 startActivity(profile);
                 break;
             case R.id.action_schedule:
