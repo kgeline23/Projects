@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">FHICT Companion</string>
+    <string name="profile_name">Profile</string>
+    <string name="schedule_name">Schedule</string>
+    <string name="people_name">People</string>
+
+    <string-array name="Classes">
+        <item>ES-41</item>
+        <item>ES-42</item>
+        <item>ET-41</item>
+        <item>ET-42</item>
+        <item>EB-41</item>
+        <item>EB-42</item>
+    </string-array>
+    <string-array name="Week">
+        <item>Week 1</item>
+        <item>Week 2</item>
+        <item>Week 3</item>
+        <item>Week 4</item>
+        <item>Week 5</item>
+        <item>Week 6</item>
+        <item>Week 7</item>
+        <item>Week 8</item>
+        <item>Week 9</item>
+        <item>Week 10</item>
+        <item>Week 11</item>
+        <item>Week 12</item>
+        <item>Week 13</item>
+        <item>Week 14</item>
+        <item>Week 15</item>
+        <item>Week 16</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "428794341217",
+    "firebase_url": "https://bubble-tea-9f36f.firebaseio.com",
+    "project_id": "bubble-tea-9f36f",
+    "storage_bucket": "bubble-tea-9f36f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:428794341217:android:5ca330e123e9001f908720",
+        "android_client_info": {
+          "package_name": "com.example.bubbletea"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "428794341217-fqroqf447ha1b54b80ucv06jg038843r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFe4QnzfFdqNBRmff4AUPZF2bfJufCSsg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "428794341217-fqroqf447ha1b54b80ucv06jg038843r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

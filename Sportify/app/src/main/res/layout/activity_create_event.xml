@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateEventActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/CreateEvent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.121">
+
+        <EditText
+            android:id="@+id/editTextTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="00:00"
+            android:inputType="time" />
+
+        <Spinner
+            android:id="@+id/spinnerCategory"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="event name"
+            android:inputType="textPersonName" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextSearchLocation"
+                android:layout_width="268dp"
+                android:layout_height="43dp"
+                android:ems="10"
+                android:hint="location"
+                android:inputType="textPersonName" />
+
+            <ImageButton
+                android:id="@+id/imageButtonLocate"
+                android:layout_width="67dp"
+                android:layout_height="53dp"
+                app:srcCompat="@android:drawable/ic_menu_search" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/CreateEvent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Add Event"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <fragment
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:id="@+id/mapView"
+        android:layout_width="320dp"
+        android:layout_height="385dp"
+        app:layout_constraintBottom_toTopOf="@+id/CreateEvent"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="0.392" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

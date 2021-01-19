@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/flCommList"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragments.CommentListFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="5dp"
+            android:text="Comments"
+            android:textSize="20sp" />
+
+        <ListView
+            android:id="@+id/lvComments"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:padding="5dp">
+
+        </ListView>
+
+        <Button
+            android:id="@+id/btnAddComFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="right"
+            android:text="Add comment"
+            app:layout_constraintBottom_toTopOf="@+id/lvComments"
+            app:layout_constraintEnd_toStartOf="@+id/lvComments"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+</FrameLayout>

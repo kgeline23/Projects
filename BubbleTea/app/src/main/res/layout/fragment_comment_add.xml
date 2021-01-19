@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/flCommAdd"
+    tools:context=".Fragments.CommentAddFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="5dp"
+            android:text="Comments"
+            style="@style/SubTitle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Genug zucker?"
+                style="@style/NormalText" />
+
+            <Switch
+                android:id="@+id/switchSugar"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                style="@style/NormalText"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            >
+
+            <RadioGroup
+                android:id="@+id/rbTemp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" >
+
+                <RadioButton
+                    android:id="@+id/rbCold"
+                    style="@style/NormalText"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Kalt" />
+
+                <RadioButton
+                    android:id="@+id/rbTempBoth"
+                    style="@style/NormalText"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Beides" />
+
+                <RadioButton
+                    android:id="@+id/rbWarm"
+                    style="@style/NormalText"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Warm" />
+            </RadioGroup>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <RadioGroup
+                android:id="@+id/rbBoba"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5" >
+
+                <RadioButton
+                    android:id="@+id/rbBobaTapioca"
+                    style="@style/NormalText"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tapioca" />
+
+                <RadioButton
+                    android:id="@+id/rbBobaFrucht"
+                    style="@style/NormalText"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:text="Frucht Boba" />
+
+                <RadioButton
+                    android:id="@+id/rbBobaBoth"
+                    style="@style/NormalText"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Beides" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <Switch
+            android:id="@+id/switchExtra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select to add an extra"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/etExtra"
+            style="@style/NormalText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:paddingLeft="20dp"
+            android:text="Extra ..."
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/btnAddCom"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="Add"
+            app:layout_constraintBottom_toTopOf="@+id/lvComments"
+            app:layout_constraintEnd_toStartOf="@+id/lvComments"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+</FrameLayout>

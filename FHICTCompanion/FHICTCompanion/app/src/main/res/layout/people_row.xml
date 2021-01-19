@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    app:layout_constraintCircleRadius="15dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:id="@+id/people_item">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@drawable/img1"
+            android:id="@+id/ivPeople"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:text="name"
+            android:id="@+id/tvPeopleName"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_gravity="center"
+            android:textSize="16dp"
+            android:text="Email"
+            android:id="@+id/tvPeopleEmail"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_gravity="center"
+            android:textSize="16dp"
+            android:text="Office"
+            android:id="@+id/tvPeopleOffice"/>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
